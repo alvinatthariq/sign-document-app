@@ -27,8 +27,11 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('/')
             ->login()
+            ->darkMode(false)
+            ->brandLogo(asset('images/pertamina-logo.png'))
+            ->favicon(asset('images/pertamina-logo-small.png'))
             ->colors([
                 'primary' => Color::Amber,
             ])
