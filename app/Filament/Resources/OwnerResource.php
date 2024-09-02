@@ -15,6 +15,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\ViewField;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
+use Filament\Forms\Components\Component;
+use Filament\Infolists\Components\ViewEntry;
+use Filament\Infolists\Components\Section;
+
 
 
 class OwnerResource extends Resource
@@ -67,9 +71,15 @@ class OwnerResource extends Resource
     {
         return $infolist
             ->schema([
-                Infolists\Components\TextEntry::make('name'),
-                Infolists\Components\TextEntry::make('employee_number'),
-                Infolists\Components\TextEntry::make('position'),
+                Section::make('Info')->schema([
+                    Infolists\Components\TextEntry::make('name'),
+                    Infolists\Components\TextEntry::make('employee_number'),
+                    Infolists\Components\TextEntry::make('position'),
+                ]),
+                Section::make('General')->schema([
+                    ViewEntry::make('status')
+                    ->view('forms.components.document-preview')
+                ]),
             ]);
     }
 
