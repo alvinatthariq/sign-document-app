@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\ViewField;
+
 
 class OwnerResource extends Resource
 {
@@ -32,6 +34,8 @@ class OwnerResource extends Resource
                 Forms\Components\TextInput::make('position')
                     ->required()
                     ->maxLength(255),
+                ViewField::make('signature')
+                    ->view('forms.components.range-slider')
             ]);
     }
 
